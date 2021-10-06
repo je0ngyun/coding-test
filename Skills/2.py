@@ -1,5 +1,7 @@
 list = list(map(int, input().split(" ")))
 
+# SWAP
+
 # resurt = ""
 # def swab(num):
 #     global resurt
@@ -13,6 +15,9 @@ list = list(map(int, input().split(" ")))
 # while list:
 #     swab(list.pop())
 # print(resurt)
+
+
+# Magic Method
 
 
 class Predicate(str):
