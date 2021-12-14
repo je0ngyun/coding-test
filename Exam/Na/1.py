@@ -13,16 +13,16 @@ def solution(cards):
             i2 = cards[j].index(ds2)
             # index 가 다를때만 카드 교체시도
             if i1 != i2:
-                nc1 = cards[i].copy()
-                nc2 = cards[j].copy()
-                nc1[i1] += 1
-                nc1[i2] -= 1
-                nc2[i2] += 1
-                nc2[i1] -= 1
+                ns1 = cards[i].copy()
+                ns2 = cards[j].copy()
+                ns1[i1] += 1
+                ns1[i2] -= 1
+                ns2[i2] += 1
+                ns2[i1] -= 1
                 # 원래보다 이득이 될 경우에만 교체
-                if ds1 < min(nc1) and ds2 < min(nc2):
-                    cards[i] = nc1
-                    cards[j] = nc2
+                if ds1 < min(ns1) and ds2 < min(ns2):
+                    cards[i] = ns1
+                    cards[j] = ns2
                     v[i] = False
                     v[j] = False
     return cards
