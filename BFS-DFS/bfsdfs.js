@@ -39,3 +39,39 @@ const bfs = function (start) {
     }
   }
 };
+
+const arr = [1, 2, 3, 4, 5];
+const selectNum = 3;
+const visit = Array(arr.length).fill(false);
+let set = [];
+
+const perm = (len, ret = []) => {
+  if (len == selectNum) {
+    ret.push([...set]);
+    return;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (!visit[i]) {
+      set[len] = arr[i];
+      visit[i] = true;
+      perm(len + 1, ret);
+      visit[i] = false;
+    }
+  }
+  return ret;
+};
+
+const comb = (len, k, ret = []) => {
+  if (len == selectNum) {
+    ret.push([...set]);
+    return;
+  }
+  if (k == arr.length) return;
+  set[len] = arr[k];
+  comb(len + 1, k + 1, ret);
+  comb(len, k + 1, ret);
+  return ret;
+};
+
+console.log(perm(0));
+console.log(comb(0, 0));
