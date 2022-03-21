@@ -75,3 +75,36 @@ const comb = (len, k, ret = []) => {
 
 console.log(perm(0));
 console.log(comb(0, 0));
+
+// 다른 형식으로 작성해보기
+const combi = (arr, select, tmp = [], ret = [], depth = 0) => {
+  if (tmp.length === select) {
+    ret.push(tmp);
+    return;
+  }
+  if (depth >= arr.length) {
+    return;
+  }
+  const t = tmp.slice(0);
+  t.push(arr[depth]);
+  combi(arr, select, t, ret, depth + 1);
+  combi(arr, select, tmp.slice(0), ret, depth + 1);
+  return ret;
+};
+
+const permu = (arr, select, tmp = [], ret = [], isUsage = new Set()) => {
+  if (tmp.length === select) {
+    ret.push(tmp);
+    return;
+  }
+  arr.forEach((p, i) => {
+    if (!isUsage.has(i)) {
+      tmp.push(p);
+      isUsage.add(i);
+      permu(arr, select, tmp.slice(0), ret, isUsage);
+      tmp.pop();
+      isUsage.delete(i);
+    }
+  });
+  return ret;
+};
