@@ -1,4 +1,5 @@
 'use strict';
+// 케빈 베이컨의 6단계 법칙
 
 const input = require('fs')
   .readFileSync('./Boj/input/1389.stdin')
