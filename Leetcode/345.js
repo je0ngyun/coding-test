@@ -17,12 +17,8 @@ const reverseVowels = (s) => {
       right--;
       continue;
     }
-    if (!regex.test(a)) {
-      left++;
-    }
-    if (!regex.test(b)) {
-      right--;
-    }
+    if (!regex.test(a)) left++;
+    if (!regex.test(b)) right--;
   }
   return ret.join('');
 };
