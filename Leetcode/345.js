@@ -1,6 +1,7 @@
 'use strict';
 
 const reverseVowels = (s) => {
+  const regex = /[aeiouAEIOU]/;
   let left = 0;
   let right = s.length - 1;
   let ret = s.split('');
@@ -8,7 +9,7 @@ const reverseVowels = (s) => {
   while (left <= right) {
     const a = s.charAt(left);
     const b = s.charAt(right);
-    if ('aeiouAEIOU'.includes(a) && 'aeiouAEIOU'.includes(b)) {
+    if (regex.test(a) && regex.test(b)) {
       const tmp = ret[left];
       ret[left] = ret[right];
       ret[right] = tmp;
@@ -16,14 +17,13 @@ const reverseVowels = (s) => {
       right--;
       continue;
     }
-    if (!'aeiou'.includes(a)) {
+    if (!regex.test(a)) {
       left++;
     }
-    if (!'aeiou'.includes(b)) {
+    if (!regex.test(b)) {
       right--;
     }
   }
-
   return ret.join('');
 };
 
