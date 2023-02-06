@@ -91,3 +91,26 @@ const binarySearch = (arr, left, right, tgt) => {
 console.log(binarySearch(a, 0, a.length - 1, 7));
 console.log(permu([1, 2, 3, 4], 3));
 console.log(combi([1, 2, 3, 4], 3));
+
+//최소비용
+let discount = [10, 20, 30, 40];
+let len = 4;
+let res = [];
+let arr = Array(len).fill(0);
+
+const dfsMin = (depth) => {
+  if (depth === len) {
+    res.push(arr.slice());
+    return;
+  }
+
+  for (let i = 0; i < 4; i++) {
+    arr[depth] = discount[i];
+    dfsMin(depth + 1);
+    arr[depth] = 0;
+  }
+};
+
+dfs(0);
+
+console.log(res);
