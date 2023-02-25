@@ -13,11 +13,29 @@ let [N, r, c] = require('fs')
   .split(' ')
   .map((v) => +v);
 
-const sol = (N, r, c) => {
-  if (N === 0) return 0;
-  return (
-    2 * (r % 2) + (c % 2) + 4 * sol(N - 1, Math.floor(r / 2), Math.floor(c / 2))
-  );
-};
+let ans = 0;
 
-console.log(sol(N, r, c));
+// 몇 사분면인지 체크
+
+while (N > 0) {
+  N -= 1;
+
+  const base = 2 ** N;
+  const start = base * base;
+
+  if (r < base && c < base) {
+    ans += start * 0;
+  } else if (r < base && c >= base) {
+    ans += start * 1;
+    c -= base;
+  } else if (r >= base && c < base) {
+    ans += start * 2;
+    r -= base;
+  } else {
+    ans += start * 3;
+    c -= base;
+    r -= base;
+  }
+}
+
+console.log(ans);
